@@ -1,0 +1,10 @@
+@use "themes" as t;
+@use "includes" as i;
+
+:host {
+  @include i.flex-row();
+  width: 100%;
+  color: t.get-color('primary-neutral');
+  gap: 0.5rem;
+  @include t.text-macro();
+}

@@ -1,0 +1,54 @@
+<button
+  #button
+  [appDropdown]="dropdown"
+  (opened)="onOpen()"
+  (closed)="onClose()"
+  [offsetY]="8"
+  class="input-wrap"
+  [class.purple]="color() === 'primary'"
+  [class.orange]="color() === 'secondary'"
+  [class.gray]="options().length === 0 && parentType() === 'media-device'"
+  [class.rounded-full]="roundedFull()"
+  type="button"
+  [class.has-icon]="icon"
+  [title]="selectedOption ? selectedOption.name : ''">
+  @if (icon) {
+    <app-icon [name]="icon" />
+  }
+
+  <p [class.truncate]="truncate()">
+    @if (selectedOption) {
+      {{ selectedOption.name }}
+    } @else {
+      {{ placeholder }}
+    }
+  </p>
+
+  <app-icon
+    [@indicatorRotate]="panelState()"
+    name="saxArrowDown1Outline"
+    class="input-icon" />
+</button>
+
+<ng-template #dropdown>
+  <app-dropdown>
+    @defer {
+      <app-select-panel
+        [filterable]="filter()"
+        [options]="options()"
+        [control]="control"
+        [multipleChoice]="false"
+        (selectOutput)="onSelect()"
+        [filterPlaceholder]="
+          'form.search-placeholder' | translate
+        "></app-select-panel>
+    } @placeholder (minimum 300ms) {
+      <div class="skeleton-dropdown">
+        @if (filter()) {
+          <app-skeleton [height]="40"></app-skeleton>
+        }
+        <app-skeleton [height]="200"></app-skeleton>
+      </div>
+    }
+  </app-dropdown>
+</ng-template>

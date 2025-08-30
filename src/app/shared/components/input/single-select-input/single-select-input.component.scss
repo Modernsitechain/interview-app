@@ -1,0 +1,117 @@
+@use 'includes' as i;
+@use 'themes' as t;
+
+:host {
+  &.has-icon {
+    &.sm {
+      .input-wrap {
+        padding-left: 2rem;
+      }
+    }
+
+    .input-wrap {
+      padding-left: 2rem;
+    }
+
+    .icon {
+      position: absolute;
+      transform: translate(-50%, -50%);
+      top: 50%;
+      left: 1.2rem;
+      font-size: t.font-size('xs');
+    }
+  }
+}
+
+.input-wrap {
+  @include i.input-base();
+  @include i.input-solid();
+  @include i.flex-row();
+
+  position: relative;
+  justify-content: flex-start;
+  text-align: left;
+
+  gap: 0.35rem;
+
+ 
+
+  p{
+    @include t.text-sm(medium);
+    color: t.$black;
+  }
+
+  &.has-icon{
+    padding-left: 1rem !important;
+  }
+
+  &.rounded-full {
+    border-radius: i.border-radius('full');
+  }
+
+  .input-icon {
+    @include t.text-sm();
+    @include i.flex(center, center);
+    position: absolute;
+    height: 100%;
+    top: 0;
+    right: 0.75rem;
+  }
+
+  &.disabled {
+    pointer-events: none;
+  }
+
+  
+
+  &.purple{
+    border: 1px solid t.get-color('primary-green') !important;
+    color: t.get-color('primary-green') !important;
+    
+    p{
+      color: t.get-color('primary-green') !important;
+    }
+  }
+
+  &.gray{
+    cursor: not-allowed;
+    border: 1px solid t.get-color('primary-neutral') !important;
+    color: t.get-color('primary-neutral') !important;
+    
+    p{
+      color: t.get-color('primary-neutral') !important;
+    }
+  }
+
+  &.orange{
+    border: 1px solid t.get-color('orange') !important;
+    color: t.get-color('orange') !important;
+    
+    p{
+      color: t.get-color('orange') !important;
+    }
+  }
+}
+
+@include i.breakpoint-up(i.$default-breakpoint-up) {
+  .dropdown-wrapper {
+    border-radius: i.border-radius('lg');
+  }
+
+  .input-wrap{
+    p {
+      &.truncate {
+        max-width: 7.2rem;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+    }
+  }
+}
+
+.skeleton-dropdown{
+  @include i.flex-column(center, center);
+  width: 100%;
+  gap: .625rem;
+}

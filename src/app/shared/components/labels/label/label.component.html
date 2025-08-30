@@ -1,0 +1,9 @@
+@if (icon()) {
+  <app-icon [name]="icon()!" [class]="iconPosition()"></app-icon>
+}
+
+@if (!iconOnly()) {
+  <span>
+    <ng-content></ng-content>
+  </span>
+}

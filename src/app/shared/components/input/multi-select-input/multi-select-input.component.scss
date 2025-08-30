@@ -1,0 +1,61 @@
+@use 'includes' as i;
+@use 'themes' as t;
+
+.input-wrap {
+  @include i.input-base();
+  @include i.input-solid();
+  @include i.flex-row();
+  position: relative;
+  justify-content: flex-start;
+  text-align: left;
+  gap: 0.35rem;
+  border: 1.5px solid t.get-color('primary-green');
+  color: t.get-color('primary-green');
+  background: transparent;
+
+  p {
+    @include t.text-sm(medium);
+    color: t.get-color('primary-green');
+  }
+
+  &.rounded-full {
+    border-radius: i.border-radius('full');
+  }
+
+  .input-left-icon {
+    font-size: 1rem;
+  }
+
+  .input-icon {
+    @include t.text-sm();
+    @include i.flex(center, center);
+    position: absolute;
+    height: 100%;
+    top: 0;
+    right: 0.75rem;
+  }
+
+  &.purple {
+    border: 1px solid t.get-color('primary-green') !important;
+    color: t.get-color('primary-green') !important;
+
+    p {
+      color: t.get-color('primary-green') !important;
+    }
+  }
+
+  &.orange {
+    border: 1px solid t.get-color('orange') !important;
+    color: t.get-color('orange') !important;
+
+    p {
+      color: t.get-color('orange') !important;
+    }
+  }
+}
+
+.dropdown-panel {
+  padding: 0;
+}
+
+

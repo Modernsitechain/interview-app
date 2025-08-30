@@ -1,0 +1,62 @@
+@use "themes" as t;
+@use "includes" as i;
+
+
+:host {
+  display: block;
+
+  &.disabled {
+    input {
+      opacity: 0.4;
+      background-color: t.get-color("primary-neutral");
+      color: t.get-color("primary-neutral");
+      pointer-events: none;
+    }
+  }
+}
+
+.input-wrapper {
+  @include i.flex(stretch);
+  position: relative;
+
+  &.has-icon {
+    position: relative;
+    .input {
+      padding-left: 2.25rem;
+    }
+    .icon {
+      position: absolute;
+      transform: translate(-50%, -50%);
+      top: 50%;
+      left: 1.2rem;
+      font-size: t.font-size('lg');
+
+      &.danger{
+        color: t.get-color('red', 600)
+      }
+    }
+  }
+}
+
+input {
+  @include i.input-base();
+  @include i.input-solid();
+
+  &[type="number"] {
+    &::-webkit-outer-spin-button,
+    &::-webkit-inner-spin-button {
+      -webkit-appearance: none;
+      appearance: none;
+      margin: 0;
+    }
+  }
+}
+
+.message {
+  @include i.flex-column();
+  gap: 0.4rem;
+  
+  app-error-message{
+    margin-top: 0.25rem;
+  }
+}

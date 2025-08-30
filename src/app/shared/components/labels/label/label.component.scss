@@ -1,0 +1,25 @@
+@use "includes" as i;
+@use "themes" as t;
+
+:host {
+  @include i.flex-row(center, center);
+  gap: 0.375rem;
+  overflow: hidden;
+}
+
+app-icon {
+  flex-shrink: 0;
+  font-size: 1.125rem;
+
+  &.right {
+    order: 100;
+  }
+}
+
+span {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  color: t.get-color('primary-neutral', 900);
+  @include t.text-macro();
+}

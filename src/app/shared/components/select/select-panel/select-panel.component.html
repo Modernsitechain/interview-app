@@ -1,0 +1,45 @@
+@if (filterable()) {
+  <header>
+    <app-input
+      [control]="queryControl"
+      [preventEnter]="true"
+      [placeholder]="filterPlaceholder()"
+      [autofocus]="true"
+      [icon]="filterIcon"
+      class="query-input"
+      size="sm">
+    </app-input>
+  </header>
+}
+
+<main
+  appLazyload
+  (reachedBottom)="onReachBottom()"
+  [dataSource]="filteredOptions"
+  #main>
+  @for (option of options; track $index) {
+    <button
+      type="button"
+      [title]="option.name"
+      class="option"
+      (click)="onSelect(option)">
+      @if (multipleChoice()) {
+        <app-option-label
+          [option]="option"
+          [checkbox]="multipleChoice() === true"
+          [choosed]="
+            multipleChoiceValues().includes(option.value)
+          "></app-option-label>
+      } @else {
+        <app-option-label
+          [option]="option"
+          [radio]="multipleChoice() === false"
+          [choosed]="option.value === control.value"></app-option-label>
+      }
+    </button>
+  }
+
+  <ng-container *ngIf="options.length === 0">
+    <span class="no-result">{{ 'text.no-result' | translate }}</span>
+  </ng-container>
+</main>

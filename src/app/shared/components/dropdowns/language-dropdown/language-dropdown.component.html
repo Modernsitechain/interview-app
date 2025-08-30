@@ -1,0 +1,53 @@
+@let BaseFlagPath = 'assets/images/flags/';
+
+<button
+  #button
+  [appDropdown]="dropdown"
+  [offsetY]="8"
+  [class.square]="square()"
+  class="dropdown-wrap"
+  (opened)="onOpen()"
+  (closed)="onClose()"
+  type="button">
+  @if (currentLanguage | async; as language) {
+    <div class="language-image-wrapper">
+      <img
+        [src]="BaseFlagPath + language.countryCode.toLowerCase() + '.svg'"
+        [alt]="language.countryCode"
+        class="image-cover" />
+    </div>
+    @if (!square()) {
+      <div class="language-text">
+        <span>{{ language.label | translate }}</span>
+      </div>
+    }
+  }
+  @if (!square()) {
+    <app-icon
+      [@indicatorRotate]="panelState()"
+      name="saxArrowDown1Outline"
+      class="input-icon" />
+  }
+</button>
+
+<ng-template #dropdown>
+  <app-dropdown>
+    @for (language of languages; track language.countryCode) {
+      <button
+        appButton="text"
+        rounded="md"
+        size="sm"
+        (click)="useLanguage(language.locale)">
+        <div class="language-image-wrapper">
+          <img
+            [src]="BaseFlagPath + language.countryCode.toLowerCase() + '.svg'"
+            [alt]="language.countryCode"
+            class="image-cover" />
+        </div>
+        <app-label>
+          <span>{{ language.label | translate }}</span>
+        </app-label>
+      </button>
+    }
+  </app-dropdown>
+</ng-template>

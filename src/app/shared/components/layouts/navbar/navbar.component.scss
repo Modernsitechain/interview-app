@@ -1,0 +1,28 @@
+@use 'includes' as i;
+@use 'themes' as t;
+
+:host {
+  width: 100%;
+  @include i.flex-row(center, space-between);
+  background-color: t.$white;
+  z-index: 5;
+  height: auto;
+  padding: 0.825rem 1.5rem;
+}
+
+.left,
+.right {
+  @include i.flex-row();
+  gap: 0.5rem;
+  z-index: 10;
+}
+
+.right {
+  gap: 1rem !important;
+}
+
+.logo-wrapper {
+  width: 139px;
+  height: auto;
+  cursor: pointer;
+}
