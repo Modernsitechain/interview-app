@@ -1,0 +1,249 @@
+@use 'includes' as i;
+@use 'themes' as t;
+
+@use 'sass:map';
+
+$button-sizes: (
+  'sm': 2rem,
+  'md': 2.875rem,
+  'lg': 3.125rem
+);
+
+@function button-size($size) {
+  @return map.get($button-sizes, $size);
+}
+.button {
+  @include i.flex(center, center, true);
+  cursor: pointer;
+  color: inherit;
+  white-space: nowrap;
+  text-decoration: none;
+  background-color: transparent;
+  transition: background-color 125ms;
+
+  user-select: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+
+  &.square {
+    padding: 0;
+  }
+
+  &.rounded {
+    &-none {
+      border-radius: i.border-radius('none');
+    }
+
+    &-md {
+      border-radius: i.border-radius('md');
+    }
+
+    &-full {
+      border-radius: i.border-radius('full');
+    }
+
+    &-circle {
+      border-radius: 100%;
+    }
+  }
+
+  &.disabled,
+  &:disabled {
+    cursor: not-allowed;
+    opacity: 0.4;
+  }
+
+  &.btn-loading {
+    pointer-events: none;
+    background-color: t.get-color('primary-neutral', 300);
+    cursor: not-allowed;
+  }
+
+  &.btn-stretch {
+    width: 100%;
+    flex: 1;
+  }
+
+  &.btn-shrink {
+    flex-shrink: 1;
+    width: auto;
+  }
+
+  &.sharp-corners {
+    border-radius: 0;
+  }
+}
+
+// SIZES
+.sm {
+  padding: 0.5rem 1rem;
+  @include t.text-sm();
+
+  .btn-square {
+    padding: 0;
+    aspect-ratio: 1 / 1;
+    width: inherit;
+    height: inherit;
+  }
+}
+
+.md {
+  padding: 0.625rem 1.25rem;
+  @include t.text-md();
+
+  .btn-square {
+    padding: 0;
+    aspect-ratio: 1 / 1;
+    width: inherit;
+    height: inherit;
+  }
+}
+
+.lg {
+  padding: 0.825rem 1.5rem;
+  @include t.text-lg();
+
+  .btn-square {
+    padding: 0;
+    aspect-ratio: 1 / 1;
+    width: inherit;
+    height: inherit;
+  }
+}
+
+// VARIANTS
+.variant-primary {
+  background-color: t.get-color('primary-green', 400);
+  color: t.$white;
+  border: 1px solid transparent;
+
+  &:hover,
+  &.btn-clicked {
+    background-color: t.get-color('primary-green');
+  }
+
+  &:disabled {
+    cursor: not-allowed;
+    background-color: t.get-color('neutral-gray', 700);
+  }
+}
+
+.variant-solid {
+  background-color: t.get-color('primary-green');
+  color: t.$white;
+  border: 1px solid transparent;
+
+  &:hover,
+  &.btn-clicked {
+    background-color: t.get-color('primary-green');
+  }
+
+  &:disabled {
+    cursor: not-allowed;
+    background-color: t.get-color('neutral-gray', 400);
+  }
+}
+
+.variant-secondary {
+  background-color: t.get-color('primary-green', 50);
+  color: t.get-color('primary-green');
+  border: 1px solid transparent;
+
+  &:hover,
+  &.btn-clicked {
+    background-color: t.get-color('primary-green');
+  }
+
+  &:disabled {
+    cursor: not-allowed;
+    background-color: t.get-color('neutral-gray', 400);
+  }
+}
+
+.variant-blur {
+  background-color: rgba(t.$white, 30%);
+  color: t.$white;
+  border: 1px solid transparent;
+  -webkit-backdrop-filter: blur(4px);
+  backdrop-filter: blur(4px);
+
+  &:hover,
+  &.btn-clicked {
+    background-color: t.get-color('primary-green', 50);
+    color: t.get-color('primary-green');
+  }
+
+  &:disabled {
+    cursor: not-allowed;
+    background-color: t.get-color('neutral-gray', 400);
+  }
+}
+
+.variant-outline {
+  background-color: transparent;
+  color: t.get-color('primary-green');
+  border: 1px solid t.get-color('primary-green');
+  &:hover,
+  &.btn-clicked {
+    background-color: t.get-color('primary-green', 50);
+    color: t.get-color('primary-green');
+    border-color: t.get-color('primary-green');
+  }
+
+  &:disabled {
+    cursor: not-allowed;
+    background-color: t.get-color('neutral-gray', 400);
+  }
+}
+
+.variant-text {
+  background-color: transparent;
+  color: t.get-color('primary-green');
+  border: 1px solid transparent;
+
+  &:hover,
+  &.btn-clicked {
+    background-color: t.get-color('primary-green', 50);
+    border-color: t.get-color('primary-green', 50);
+  }
+
+  &:disabled {
+    cursor: not-allowed;
+    color: t.get-color('neutral-gray', 600);
+  }
+}
+
+.variant-link {
+  background-color: transparent;
+  color: t.get-color('primary-green');
+  border: 1px solid transparent;
+  text-decoration: underline;
+
+  &:hover,
+  &.btn-clicked {
+    color: t.get-color('primary-green');
+  }
+
+  &:disabled {
+    cursor: not-allowed;
+    color: t.get-color('neutral-gray', 600);
+  }
+}
+
+.variant-danger {
+  background-color: t.get-color('red', 200);
+  color: t.get-color('red', 600);
+  border: 1px solid transparent;
+
+  &:hover,
+  &.btn-clicked {
+    background-color: t.get-color('red', 200);
+  }
+
+  &:disabled {
+    cursor: not-allowed;
+    background-color: t.get-color('red', 200);
+    opacity: 0.4;
+  }
+}

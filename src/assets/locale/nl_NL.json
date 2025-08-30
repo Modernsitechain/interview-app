@@ -1,0 +1,57 @@
+{
+  "title": {
+    "welcome": "Hello Title"
+  },
+
+  "desc": {
+    "welcome": "Hello Description"
+  },
+
+  "button": {
+    "welcome": "Hello Button"
+  },
+
+  "form": {
+    "welcome-label": "Welcome",
+    "welcome-placeholder": "Enter your welcome"
+  },
+
+  "table": {
+    "header-select": "Select",
+    "header-action": "Action",
+    "header-welcome": "Welcome"
+  },
+
+  "error-message": {
+    "required": "This input must be filled!",
+    "email": "Input has to be valid email!",
+    "upload-unsuccessful": "Upload unsuccessful. The file format is not supported",
+    "password-not-match": "Password and confirm password did not match!",
+    "confirm-form-required": "New password and retype password are required!",
+    "password-min-length": "Password must be 8 characters!",
+    "must-match": "New password and retype password did not match!",
+    "incorrect-account": "Incorrect email or password, try again with the correct email or password!",
+    "special-character": "Password must include at least 1 special character!",
+    "invalid-code": "Invalid verification code provided, please try again!",
+    "has-number": "Password must include at least 1 number!",
+    "has-uppercase": "Password must include at least 1 uppercase!",
+    "has-lowercase": "Password must include at least 1 lowercase!",
+    "otp-limit": "You've reached the attempt limit. Please try again in an hour.",
+    "match-confirm-text": "Please enter the word ‘Confirm’ exactly as shown",
+    "user-not-found": "Email not found.",
+    "no-space": "Spaces are not allowed in this field."
+  },
+
+  "info-message": {
+    "choose-up-to-3": "You can choose up to 3 specializations."
+  },
+
+  "language": {
+    "english": "English",
+    "dutch": "Dutch"
+  },
+
+  "text": {
+    "monday": "Monday"
+  }
+}

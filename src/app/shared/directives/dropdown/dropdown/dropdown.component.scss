@@ -1,0 +1,19 @@
+@use 'includes' as i;
+@use 'themes' as t;
+
+:host {
+  @include i.flex-column(stretch);
+  @include i.border-radius-t(i.border-radius('lg'));
+  width: 100%;
+  background-color: t.$white;
+  padding: 0.5rem;
+  @include i.shadow();
+  gap: 0.25rem;
+  overflow: auto;
+}
+
+@include i.breakpoint-up(i.$default-breakpoint-up) {
+  :host {
+    border-radius: i.border-radius('lg');
+  }
+}

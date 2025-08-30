@@ -1,0 +1,5 @@
+@use 'themes' as t;
+
+h1{
+    color: t.get-color('primary-green', 500)
+}
