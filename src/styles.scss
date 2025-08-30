@@ -1,1 +1,7 @@
-/* You can add global styles to this file, and also import other style files */
+@use "./styles/app/reset.scss";
+@use "./styles/app/vendor.scss";
+
+@use "./styles/app/base.scss";
+@use "./styles/utilities";
+@use "./styles/commons";
+@use "./app/shared/directives/button/button.styles.scss";

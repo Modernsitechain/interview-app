@@ -1,0 +1,29 @@
+$padding-spacer: 0.125rem;
+
+@for $i from 0 to 32 {
+  .p-#{$i} {
+    padding: $i * $padding-spacer !important;
+  }
+  .pt-#{$i} {
+    padding-top: $i * $padding-spacer !important;
+  }
+  .pr-#{$i} {
+    padding-right: $i * $padding-spacer !important;
+  }
+  .pb-#{$i} {
+    padding-bottom: $i * $padding-spacer !important;
+  }
+  .pl-#{$i} {
+    padding-left: $i * $padding-spacer !important;
+  }
+
+  .px-#{$i} {
+    padding-right: $i * $padding-spacer !important;
+    padding-left: $i * $padding-spacer !important;
+  }
+
+  .py-#{$i} {
+    padding-top: $i * $padding-spacer !important;
+    padding-bottom: $i * $padding-spacer !important;
+  }
+}

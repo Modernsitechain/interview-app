@@ -1,0 +1,13 @@
+@for $i from 0 to 100 {
+  .w-max-#{$i} {
+    max-width: $i * 1% !important;
+  }
+}
+
+.w-full {
+  width: 100%;
+}
+
+.w-fit {
+  width: fit-content;
+}

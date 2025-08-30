@@ -1,0 +1,51 @@
+@use './flex' as f;
+@use './border' as b;
+@use '../themes/' as t;
+
+@mixin checkbox() {
+  @include f.flex-row(center);
+  gap: 0.5rem;
+  cursor: pointer;
+  line-height: 1;
+
+  input[type='checkbox'] {
+    @include f.flex-row(center, center);
+    border-radius: b.border-radius('sm');
+    border: 1px solid t.get-color('neutral-gray');
+    width: 1rem;
+    min-width: 1rem;
+    height: 1rem;
+    margin: 0;
+    cursor: pointer;
+    appearance: none;
+    position: relative;
+
+    &:is(:indeterminate),
+    &:is(:checked) {
+      color: t.$white;
+      background-color: t.get-color('primary-green');
+      border-color: t.get-color('primary-green');
+
+      &:after {
+        display: block;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+      }
+    }
+
+    &:is(:checked) {
+      &:after {
+        font-size: t.font-size('xs');
+        content: '✓';
+      }
+    }
+
+    &:is(:indeterminate) {
+      &:after {
+        content: '-';
+      }
+    }
+  }
+}

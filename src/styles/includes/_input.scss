@@ -1,0 +1,63 @@
+@use './border' as b;
+@use '../themes/' as t;
+
+$input-height: 2.9rem;
+$input-height-sm: 2.5rem;
+$input-padding: 0.825rem .825rem;
+
+@mixin input-base {
+  width: 100%;
+  min-height: $input-height;
+  padding: $input-padding;
+  background-color: transparent;
+  border-radius: b.border-radius('lg');
+  outline: none;
+
+  &:disabled,
+  &.disabled {
+    cursor: not-allowed;
+  }
+
+  &.sm {
+    @include t.text-macro();
+    min-height: $input-height-sm;
+    padding: 0 0.5rem;
+  }
+
+  &.has-icon {
+    padding-left: 2rem;
+  }
+}
+
+@mixin input-solid {
+  @include t.text-sm();
+  border: 1px solid t.get-color('neutral-gray', 600);
+
+  &:focus,
+  &.focus {
+    border-color: t.get-color('neutral-gray', 600);
+  }
+
+  &:disabled,
+  &.disabled {
+    background-color: t.get-color('neutral-gray', 300);
+  }
+
+  &.danger {
+    border-color: t.get-color('red', 800);
+    // color: t.get-color('red', 800);
+
+    &.placeholder,
+    &::placeholder {
+      // color: t.get-color('red', 800);
+    }
+  }
+
+  &.success {
+    border-color: t.get-color('green', 800);
+  }
+
+  &::placeholder {
+    color: t.get-color('neutral-gray', 800);
+  }
+}
