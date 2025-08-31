@@ -32,23 +32,31 @@
 
 <ng-template #dropdown>
   <app-dropdown>
-    @defer {
+    @if (showDefer()) {
+      @defer {
+        <app-select-panel
+          [filterable]="filter()"
+          [options]="options()"
+          [control]="control"
+          [multipleChoice]="false"
+          (selectOutput)="onSelect()"
+          [filterPlaceholder]="'form.search-placeholder' | translate" />
+      } @placeholder (minimum 300ms) {
+        <div class="skeleton-dropdown">
+          @if (filter()) {
+            <app-skeleton [height]="40"></app-skeleton>
+          }
+          <app-skeleton [height]="200"></app-skeleton>
+        </div>
+      }
+    } @else {
       <app-select-panel
         [filterable]="filter()"
         [options]="options()"
         [control]="control"
         [multipleChoice]="false"
         (selectOutput)="onSelect()"
-        [filterPlaceholder]="
-          'form.search-placeholder' | translate
-        "></app-select-panel>
-    } @placeholder (minimum 300ms) {
-      <div class="skeleton-dropdown">
-        @if (filter()) {
-          <app-skeleton [height]="40"></app-skeleton>
-        }
-        <app-skeleton [height]="200"></app-skeleton>
-      </div>
+        [filterPlaceholder]="'form.search-placeholder' | translate" />
     }
   </app-dropdown>
 </ng-template>

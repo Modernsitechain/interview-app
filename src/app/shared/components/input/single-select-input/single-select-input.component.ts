@@ -44,6 +44,7 @@ export class SingleSelectInputComponent extends InputBaseClass {
   public readonly disabled = input<boolean>(false);
   public readonly roundedFull = input<boolean>(false);
   public readonly truncate = input<boolean>(false);
+  public showDefer = input(false);
 
   public panelState = computed(() =>
     this.showDropdown() ? 'opened' : 'closed'

@@ -18,6 +18,7 @@
 .form-content {
   width: 100%;
   @include i.flex-column(stretch);
+  gap: .825rem;
 }
 
 .form-button{

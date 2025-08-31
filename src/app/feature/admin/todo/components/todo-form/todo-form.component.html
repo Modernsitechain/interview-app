@@ -1,29 +1,32 @@
-<app-form-layout
-formTitle="Create Todo"
-formBackPath="/admin/todo"
-(submit)="onCreateTodo()"
->
-  <app-form [form]="form" (formSubmit)="submit()">
-    <div class="form">
-      <app-form-field
-        [label]="'form.company-label' | translate"
-        [required]="true">
-        <app-single-select-input
-          [control]="form.controls.priority"
-          [options]="todoService.todoPriorityOptions"
-          [placeholder]="'form.company-placeholder' | translate"
-          [filter]="true" />
-      </app-form-field>
-  
-      <app-form-field
-        [label]="'quotes-form.form.label.quote.english' | translate">
-        <app-input
-          inputType="textarea"
-          [control]="form.controls.description"
-          [placeholder]="
-            'quotes-form.form.placeholder.quote.english' | translate
-          " />
-      </app-form-field>
-    </div>
-  </app-form>
-</app-form-layout>
+<app-form [form]="form">
+  <app-form-layout
+    formTitle="Create Todo"
+    (submit)="onCreateTodo()"
+    [formDisabled]="form.invalid">
+    <app-form-field [label]="'Title' | translate" [required]="true">
+      <app-input
+        inputType="textarea"
+        [control]="form.controls.title"
+        [placeholder]="'Enter title' | translate" />
+    </app-form-field>
+
+    <app-form-field
+      [label]="'description' | translate"
+      [required]="false">
+      <app-input
+        inputType="textarea"
+        [control]="form.controls.description"
+        [placeholder]="
+          'Enter description' | translate
+        " />
+    </app-form-field>
+
+    <app-form-field [label]="'Priority' | translate" [required]="true">
+      <app-single-select-input
+        [control]="form.controls.priority"
+        [options]="todoService.todoPriorityOptions"
+        [placeholder]="'Select priority' | translate"
+         />
+    </app-form-field>
+  </app-form-layout>
+</app-form>

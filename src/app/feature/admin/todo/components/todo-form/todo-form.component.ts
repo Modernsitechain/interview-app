@@ -1,8 +1,7 @@
 import {
   ChangeDetectionStrategy,
   Component,
-  inject,
-  OnInit
+  inject
 } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { FormBase } from '@core/classes';
@@ -11,10 +10,8 @@ import { TodoPriorityType } from '../../models';
 import { FormComponent, FormFieldComponent } from '@shared/components/form';
 import { InputComponent } from '@shared/components/input/input/input.component';
 import { TranslateModule } from '@ngx-translate/core';
-import { ButtonDirective } from '@shared/directives';
 import { SingleSelectInputComponent } from '@shared/components/input/single-select-input/single-select-input.component';
 import { TodoService } from '@core/services';
-import { PageTitleComponent } from '@shared/components/layouts/page-title/page-title.component';
 import { FormLayoutComponent } from '@shared/components/layouts/form-layout/form-layout.component';
 
 @Component({
@@ -25,33 +22,31 @@ import { FormLayoutComponent } from '@shared/components/layouts/form-layout/form
     FormFieldComponent,
     InputComponent,
     TranslateModule,
-    ButtonDirective,
     SingleSelectInputComponent,
-    PageTitleComponent,
     FormLayoutComponent
   ],
   templateUrl: './todo-form.component.html',
   styleUrl: './todo-form.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class TodoFormComponent extends FormBase<any, any> implements OnInit {
+export class TodoFormComponent extends FormBase<any, any> {
   public readonly todoService = inject(TodoService);
+  
   public override form = new FormGroup({
-    title: new FormControl<string>('', [Validators.required]),
-    description: new FormControl<string>(''),
-    priority: new FormControl<TodoPriorityType>('high')
+    title: new FormControl<string | null>(null, [Validators.required]),
+    description: new FormControl<string | null>(null),
+    priority: new FormControl<TodoPriorityType | null>(null, [
+      Validators.required
+    ])
   });
 
-  ngOnInit(): void {
-    throw new Error('Method not implemented.');
-  }
-
-  public onCreateTodo(): void{
-    
+  public onCreateTodo(): void {
+    if (this.form.valid) {
+      console.log('this.form', this.form.value);
+    }
   }
 
   protected override onSubmit(item: any): Observable<any> {
-    console.log('item', item);
     throw new Error('Method not implemented.');
   }
 }
