@@ -14,6 +14,7 @@ import { TranslateModule } from '@ngx-translate/core';
 import { ButtonDirective } from '@shared/directives';
 import { SingleSelectInputComponent } from '@shared/components/input/single-select-input/single-select-input.component';
 import { TodoService } from '@core/services';
+import { PageTitleComponent } from '@shared/components/layouts/page-title/page-title.component';
 
 @Component({
   selector: 'app-todo-form',
@@ -24,7 +25,8 @@ import { TodoService } from '@core/services';
     InputComponent,
     TranslateModule,
     ButtonDirective,
-    SingleSelectInputComponent
+    SingleSelectInputComponent,
+    PageTitleComponent
   ],
   templateUrl: './todo-form.component.html',
   styleUrl: './todo-form.component.scss',

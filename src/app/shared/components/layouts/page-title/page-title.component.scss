@@ -1,0 +1,12 @@
+@use 'themes' as t;
+@use 'includes' as i;
+
+.page-title {
+  @include i.flex-row(center);
+  gap: 0.75rem;
+  &__text {
+    // color: t.get-color('moovd-blue', 900);
+    font-weight: 600;
+    font-size: 1.75rem;
+  }
+}

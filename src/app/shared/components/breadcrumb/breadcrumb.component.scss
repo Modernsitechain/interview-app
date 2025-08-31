@@ -1,0 +1,16 @@
+@use 'includes' as i;
+@use 'themes' as t;
+
+.breadcrumb {
+  @include t.text-macro();
+  color: t.get-color('primary-neutral', 900);
+  text-transform: capitalize;
+  padding: 0.625rem 2rem;
+  border-bottom: 1px solid t.get-color('neutral-gray');
+
+  span {
+    @include t.text-macro();
+    color: t.get-color('primary-green', 300);
+    text-decoration: underline;
+  }
+}
