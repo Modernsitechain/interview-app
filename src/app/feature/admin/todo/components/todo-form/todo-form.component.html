@@ -1,1 +1,35 @@
-<p>todo-form works!</p>
+<section class="form-wrap">
+  <div class="form-wrap__content">
+    <h1>Create Todo</h1>
+
+    <app-form [form]="form" (formSubmit)="submit()">
+      <div class="form">
+        <app-form-field
+          [label]="'form.company-label' | translate"
+          [required]="true">
+          <app-single-select-input
+            [control]="form.controls.priority"
+            [options]="todoService.todoPriorityOptions"
+            [placeholder]="'form.company-placeholder' | translate"
+            [filter]="true" />
+        </app-form-field>
+
+        <app-form-field
+          [label]="'quotes-form.form.label.quote.english' | translate">
+          <app-input
+            inputType="textarea"
+            [control]="form.controls.description"
+            [placeholder]="
+              'quotes-form.form.placeholder.quote.english' | translate
+            " />
+        </app-form-field>
+      </div>
+    </app-form>
+
+    <div class="form__action">
+      <button appButton="primary" [isDisabled]="form.invalid">
+        {{ 'form.action.submit' | translate }}
+      </button>
+    </div>
+  </div>
+</section>

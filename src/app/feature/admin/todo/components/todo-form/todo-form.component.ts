@@ -1,18 +1,37 @@
-import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  inject,
+  OnInit
+} from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { FormBase } from '@core/classes';
 import { Observable } from 'rxjs';
 import { TodoPriorityType } from '../../models';
+import { FormComponent, FormFieldComponent } from '@shared/components/form';
+import { InputComponent } from '@shared/components/input/input/input.component';
+import { TranslateModule } from '@ngx-translate/core';
+import { ButtonDirective } from '@shared/directives';
+import { SingleSelectInputComponent } from '@shared/components/input/single-select-input/single-select-input.component';
+import { TodoService } from '@core/services';
 
 @Component({
   selector: 'app-todo-form',
   standalone: true,
-  imports: [],
+  imports: [
+    FormComponent,
+    FormFieldComponent,
+    InputComponent,
+    TranslateModule,
+    ButtonDirective,
+    SingleSelectInputComponent
+  ],
   templateUrl: './todo-form.component.html',
   styleUrl: './todo-form.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class TodoFormComponent extends FormBase<any, any> implements OnInit {
+  public readonly todoService = inject(TodoService);
   public override form = new FormGroup({
     title: new FormControl<string>('', [Validators.required]),
     description: new FormControl<string>(''),
@@ -24,6 +43,7 @@ export class TodoFormComponent extends FormBase<any, any> implements OnInit {
   }
 
   protected override onSubmit(item: any): Observable<any> {
+    console.log('item', item);
     throw new Error('Method not implemented.');
   }
 }
