@@ -1,18 +1,16 @@
-<section class="form-wrap">
-  <div class="form-wrap__content">
-    <app-page-title [title]="formTitle()" (onBack)="onBack()"></app-page-title>
+<section class="form-wrapper">
+  <app-page-title [title]="formTitle()" (onBack)="onBack()"></app-page-title>
 
-    <div class="form">
-      <ng-content></ng-content>
-    </div>
+  <div class="form-content">
+    <ng-content></ng-content>
+  </div>
 
-    <div class="form__action">
-      <button
-        appButton="primary"
-        [isDisabled]="formDisabled()"
-        (click)="onSubmit()">
-        {{ 'button.submit' | translate }}
-      </button>
-    </div>
+  <div class="form-button">
+    <button
+      appButton="primary"
+      [isDisabled]="formDisabled()"
+      (click)="onSubmit()">
+      {{ 'button.submit' | translate }}
+    </button>
   </div>
 </section>
