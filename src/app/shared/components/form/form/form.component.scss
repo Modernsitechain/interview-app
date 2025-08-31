@@ -1,0 +1,10 @@
+:host {
+  display: block;
+  width: 100%;
+  position: relative;
+}
+
+form.disabled {
+  opacity: 0.5;
+  pointer-events: none;
+}

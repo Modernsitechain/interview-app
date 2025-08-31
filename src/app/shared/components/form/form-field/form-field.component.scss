@@ -1,0 +1,23 @@
+@use "themes" as t;
+@use "includes" as i;
+
+:host {
+  display: block;
+}
+
+p {
+  display: block;
+  @include t.text-macro(bold);
+  color: t.get-color("primary-neutral", 900);
+  margin-bottom: 0.125rem;
+
+  span {
+    color: t.get-color("red", 800);
+  }
+}
+
+.message {
+  margin-top: 0.25rem;
+  @include i.flex-column();
+  gap: 0.625rem;
+}
