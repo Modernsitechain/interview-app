@@ -15,6 +15,7 @@ import { ButtonDirective } from '@shared/directives';
 import { SingleSelectInputComponent } from '@shared/components/input/single-select-input/single-select-input.component';
 import { TodoService } from '@core/services';
 import { PageTitleComponent } from '@shared/components/layouts/page-title/page-title.component';
+import { FormLayoutComponent } from '@shared/components/layouts/form-layout/form-layout.component';
 
 @Component({
   selector: 'app-todo-form',
@@ -26,7 +27,8 @@ import { PageTitleComponent } from '@shared/components/layouts/page-title/page-t
     TranslateModule,
     ButtonDirective,
     SingleSelectInputComponent,
-    PageTitleComponent
+    PageTitleComponent,
+    FormLayoutComponent
   ],
   templateUrl: './todo-form.component.html',
   styleUrl: './todo-form.component.scss',
@@ -42,6 +44,10 @@ export class TodoFormComponent extends FormBase<any, any> implements OnInit {
 
   ngOnInit(): void {
     throw new Error('Method not implemented.');
+  }
+
+  public onCreateTodo(): void{
+    
   }
 
   protected override onSubmit(item: any): Observable<any> {
