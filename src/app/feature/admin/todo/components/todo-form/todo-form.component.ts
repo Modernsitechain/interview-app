@@ -10,6 +10,7 @@ import { SingleSelectInputComponent } from '@shared/components/input/single-sele
 import { TodoService } from '@core/services';
 import { FormLayoutComponent } from '@shared/components/layouts/form-layout/form-layout.component';
 import { Router } from '@angular/router';
+import dayjs from 'dayjs';
 
 @Component({
   selector: 'app-todo-form',
@@ -40,7 +41,21 @@ export class TodoFormComponent extends FormBase<any, any> {
 
   public onCreateTodo(): void {
     if (this.form.valid) {
-      console.log('this.form', this.form.value);
+      const id = dayjs().toISOString();
+      const title = this.form.controls.title.value || '';
+      const priority = this.form.controls.priority.value || 'high';
+      const description = this.form.controls.description.value;
+
+      this.todoService.addTodo({
+        id: id,
+        title: title,
+        description: description,
+        completed: false,
+        createdAt: dayjs().toISOString(),
+        priority: priority,
+        updatedAt: null,
+        dueDate: null
+      });
     }
   }
 

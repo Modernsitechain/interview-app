@@ -40,6 +40,10 @@ export const TodoTableHeaders: OptionInterface<
   {
     name: 'Due Date',
     value: 'dueDate'
+  },
+  {
+    name: 'Action',
+    value: 'action'
   }
 ];
 
