@@ -25,6 +25,7 @@
             [dataSource]="dataSource()"
             [headers]="headers"
             [uniqueValues]="uniqueTableValue"
+            (delete)="onDeleteTodo($event)"
             [contentName]="'Todo'" />
         </div>
 

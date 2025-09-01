@@ -11,7 +11,7 @@ import {
   TodoTableUniqueValue
 } from '../../models';
 import { MatTableDataSource } from '@angular/material/table';
-import { TodoService } from '@core/services';
+import { ToastService, TodoService } from '@core/services';
 import { finalize, map, Observable } from 'rxjs';
 import { TableLoadingStateComponent } from '@shared/components/tables/table-loading-state/table-loading-state.component';
 import { TableComponent } from '@shared/components/tables/table/table.component';
@@ -41,6 +41,7 @@ import { Router } from '@angular/router';
 export class TodoListComponent implements OnInit {
   private readonly todoService = inject(TodoService);
   private readonly router = inject(Router);
+  private readonly toastService = inject(ToastService);
 
   public dataSource = signal<MatTableDataSource<TodoTable>>(
     new MatTableDataSource()
@@ -70,6 +71,18 @@ export class TodoListComponent implements OnInit {
 
   protected onCreateTodo(): void {
     this.router.navigate(['admin/todo/create']);
+  }
+
+  protected onDeleteTodo(data: TodoTable){
+    this.todoService.deleteTodoById(data.id);
+    this.fetchData()
+      .pipe(finalize(() => this.isLoading.set(false)))
+      .subscribe({
+        next: (todos) => {
+          this.dataSource.set(new MatTableDataSource(todos));
+          this.toastService.success.set(`Todo ${data.id} successfully deleted!`);
+        }
+      });
   }
 
   private fetchData(): Observable<TodoTable[]> {

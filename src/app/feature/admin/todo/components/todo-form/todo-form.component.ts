@@ -42,7 +42,7 @@ export class TodoFormComponent extends FormBase<any, any> {
 
   public onCreateTodo(): void {
     if (this.form.valid) {
-      const id = dayjs().toISOString();
+      const id = dayjs().unix().toString();
       const title = this.form.controls.title.value || '';
       const priority = this.form.controls.priority.value || 'high';
       const description = this.form.controls.description.value;
