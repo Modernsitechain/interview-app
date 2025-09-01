@@ -1,8 +1,4 @@
-import {
-  ChangeDetectionStrategy,
-  Component,
-  inject
-} from '@angular/core';
+import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { FormBase } from '@core/classes';
 import { Observable } from 'rxjs';
@@ -13,6 +9,7 @@ import { TranslateModule } from '@ngx-translate/core';
 import { SingleSelectInputComponent } from '@shared/components/input/single-select-input/single-select-input.component';
 import { TodoService } from '@core/services';
 import { FormLayoutComponent } from '@shared/components/layouts/form-layout/form-layout.component';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-todo-form',
@@ -31,7 +28,8 @@ import { FormLayoutComponent } from '@shared/components/layouts/form-layout/form
 })
 export class TodoFormComponent extends FormBase<any, any> {
   public readonly todoService = inject(TodoService);
-  
+  private readonly router = inject(Router);
+
   public override form = new FormGroup({
     title: new FormControl<string | null>(null, [Validators.required]),
     description: new FormControl<string | null>(null),
@@ -44,6 +42,10 @@ export class TodoFormComponent extends FormBase<any, any> {
     if (this.form.valid) {
       console.log('this.form', this.form.value);
     }
+  }
+
+  public onBack(): void {
+    this.router.navigate(['/admin/todo']);
   }
 
   protected override onSubmit(item: any): Observable<any> {

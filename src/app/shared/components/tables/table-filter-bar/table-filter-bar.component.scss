@@ -1,0 +1,85 @@
+@use 'includes' as i;
+@use 'themes' as t;
+
+:host {
+  width: 100%;
+  @include i.flex-column(stretch);
+  height: auto;
+  gap: 1rem;
+}
+
+.searchbar {
+  @include i.flex-row(center, center);
+  flex-shrink: 0;
+  gap: 1rem;
+  background-color: t.$white;
+  padding: 0.5rem 1.5rem;
+  border-radius: i.border-radius('md');
+
+  &__counter {
+    p {
+      flex-shrink: 0;
+      color: t.get-color('neutral-gray', 800);
+
+      span {
+        color: t.get-color('primary-neutral', 900);
+        font-weight: bold;
+      }
+    }
+  }
+
+  &__input {
+    flex-grow: 1;
+    padding-top: 4px;
+  }
+
+  &__button {
+    @include i.flex-row();
+    flex-shrink: 0;
+    gap: 1rem;
+    button {
+      border-radius: i.border-radius("md");
+    }
+
+    .filter {
+      color: t.get-color('neutral-gray', 800);
+    }
+  }
+}
+
+.filter-list {
+  @include i.flex-row(center, flex-start);
+  gap: 0.5rem;
+  // @include i.text-macro();
+
+  .filter-item {
+    @include i.flex-row(center, flex-start);
+    background-color: white;
+    padding: 0.5rem 0.75rem;
+    border-radius: i.border-radius("md");
+    gap: 0.5rem;
+    
+    &__left{
+      color: t.get-color('neutral-gray', 900);
+    }
+    &__center {
+      p {
+        color: t.get-color('neutral-gray', 900);
+        @include t.text-macro();
+        padding-bottom: .25rem;
+      }
+    }
+
+    &__right{
+      &:hover{
+        cursor: pointer;
+        color: t.get-color('red', 800);
+      }
+    }
+  }
+}
+.white-text{
+  color: t.$white !important;
+  margin-right: .25rem;
+  font-size: 1rem;
+}

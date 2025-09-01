@@ -53,6 +53,9 @@
 
   "text": {
     "menu": "Menu",
-    "menu-todo": "Todo List"
+    "menu-todo": "Todo List",
+    "no-data-found": "No Data Found",
+    "no-data-found-description": "We couldn’t find any matching records. Try adjusting your search or filter, or add new data to get started.",
+    "total-data": "Total data : "
   }
 }

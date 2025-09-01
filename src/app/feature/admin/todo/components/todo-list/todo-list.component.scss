@@ -1,0 +1,36 @@
+@use 'includes' as i;
+
+.content-wrap {
+  margin: 1.5rem;
+  @include i.flex-column(stretch);
+  height: fit-content;
+  background-color: white;
+  border-radius: i.border-radius('md');
+  padding: 0.5rem 0 1rem 0;
+
+  &__filter {
+    margin-bottom: 0.5rem;
+  }
+}
+
+.table {
+  flex-grow: 1;
+  width: 100%;
+  height: fit-content;
+  padding: 0 1.5rem;
+  @include i.flex-column(stretch);
+  &__content {
+    max-height: 55vh;
+    overflow-y: auto;
+  }
+
+  &__paginator {
+    margin-top: 2rem;
+    flex-shrink: 0;
+  }
+}
+
+.filter-buttons {
+  @include i.flex-row(center, center);
+  gap: 1rem;
+}

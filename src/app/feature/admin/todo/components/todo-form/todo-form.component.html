@@ -2,6 +2,7 @@
   <app-form-layout
     formTitle="Create Todo"
     (submit)="onCreateTodo()"
+    (back)="onBack()"
     [formDisabled]="form.invalid">
     <app-form-field [label]="'Title' | translate" [required]="true">
       <app-input
