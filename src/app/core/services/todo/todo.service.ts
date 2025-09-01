@@ -10,7 +10,7 @@ import { Todo, TodoPriorityOptions } from '@feature/admin/todo/models';
 })
 export class TodoService {
   public readonly todoPriorityOptions = TodoPriorityOptions;
-  
+
   private todos = signal<Todo[] | null>(null);
   private readonly localStorageService = inject(LocalStorageService);
 
@@ -72,6 +72,17 @@ export class TodoService {
       this.todos.set([data]);
     }
     this.localStorageService.set(LocalStorageKey.MY_TODOS, this.todos());
+  }
+
+  public getTodoById(id: string): Todo | null {
+    const currentTodos = this.todos();
+
+    if (Array.isArray(currentTodos)) {
+      const selectedTodo = currentTodos.find((todo) => todo.id === id);
+
+      if (selectedTodo) return selectedTodo;
+    }
+    return null;
   }
 
   public deleteTodoById(id: string) {

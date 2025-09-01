@@ -24,6 +24,6 @@ export class ToastService {
       if (this.error()) {
         this.toastr.error(this.error(), 'Error');
       }
-    });
+    }, {allowSignalWrites: true});
   }
 }

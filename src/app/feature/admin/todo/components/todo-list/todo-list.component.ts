@@ -73,6 +73,10 @@ export class TodoListComponent implements OnInit {
     this.router.navigate(['admin/todo/create']);
   }
 
+  protected onUpdateTodo(data: TodoTable): void{
+    this.router.navigate([`admin/todo/update/${data.id}`]);
+  }
+
   protected onDeleteTodo(data: TodoTable){
     this.todoService.deleteTodoById(data.id);
     this.fetchData()

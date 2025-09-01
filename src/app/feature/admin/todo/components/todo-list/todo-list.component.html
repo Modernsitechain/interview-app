@@ -3,12 +3,14 @@
     <app-table-filter-bar
       [(searchKey)]="modelSearchKey"
       [(selectedData)]="modelSelectedData"
-      [totalData]="dataSource()._filterData.length"
+      [totalData]="dataSource().data.length"
       (searchKeyChange)="search($event)"
       [showSelectedChip]="false"
       [searchPlaceholder]="'Search' | translate">
       <div buttons class="filter-buttons">
-        <button appButton size="sm" (click)="onCreateTodo()">Create Todo</button>
+        <button appButton size="sm" (click)="onCreateTodo()">
+          Create Todo
+        </button>
       </div>
     </app-table-filter-bar>
   </div>
@@ -26,6 +28,7 @@
             [headers]="headers"
             [uniqueValues]="uniqueTableValue"
             (delete)="onDeleteTodo($event)"
+            (update)="onUpdateTodo($event)"
             [contentName]="'Todo'" />
         </div>
 
