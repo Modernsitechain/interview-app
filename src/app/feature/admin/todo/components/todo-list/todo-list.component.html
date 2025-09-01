@@ -1,0 +1,46 @@
+<section class="content-wrap">
+  <div class="content-wrap__filter">
+    <app-table-filter-bar
+      [(searchKey)]="modelSearchKey"
+      [(selectedData)]="modelSelectedData"
+      [totalData]="dataSource().data.length"
+      (searchKeyChange)="search($event)"
+      [showSelectedChip]="false"
+      [searchPlaceholder]="'Search' | translate">
+      <div buttons class="filter-buttons">
+        <button appButton size="sm" (click)="onCreateTodo()">
+          Create Todo
+        </button>
+      </div>
+    </app-table-filter-bar>
+  </div>
+
+  @if (isLoading()) {
+    <app-table-loading-state />
+  } @else {
+    @if (dataSource().filteredData.length > 0) {
+      <div class="table">
+        <div class="table__content">
+          <app-table
+            [(loading)]="isLoading"
+            [(error)]="isError"
+            [dataSource]="dataSource()"
+            [headers]="headers"
+            [uniqueValues]="uniqueTableValue"
+            (delete)="onDeleteTodo($event)"
+            (update)="onUpdateTodo($event)"
+            [contentName]="'Todo'" />
+        </div>
+
+        <div class="table__paginator">
+          <mat-paginator
+            [pageSizeOptions]="[10, 25, 50, 100]"
+            showFirstLastButtons
+            aria-label="Select page"></mat-paginator>
+        </div>
+      </div>
+    } @else {
+      <app-table-no-data-state />
+    }
+  }
+</section>

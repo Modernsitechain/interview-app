@@ -1,0 +1,10 @@
+@switch (type()) {
+  @case ('image') {
+    <div class="image-wrap">
+      <img [src]="baseMediaURL + value()" [alt]="value()" />
+    </div>
+  }
+  @default {
+    <p>{{ value() }}</p>
+  }
+}

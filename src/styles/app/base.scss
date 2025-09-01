@@ -1,0 +1,22 @@
+@use "../includes/scrollbar" as s;
+@use '../includes/breakpoints' as b;
+@use "../themes";
+
+html,
+body {
+  width: 100%;
+  height: 100%;
+  font-family: themes.$base-font-family;
+  font-size: themes.$base-font-size;
+  font-weight: themes.$base-font-weight;
+  color: themes.$black;
+  overflow: hidden;
+}
+
+* {
+  -webkit-tap-highlight-color: transparent;
+}
+
+* {
+  @include s.scrollbar();
+}

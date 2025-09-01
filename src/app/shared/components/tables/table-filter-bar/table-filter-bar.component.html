@@ -1,0 +1,56 @@
+<div class="searchbar">
+  <div class="searchbar__counter">
+    <p class="text-capitalize">
+      {{ 'text.total-data' | translate }}
+      <span>{{ totalData() }}</span>
+    </p>
+  </div>
+
+  <div class="searchbar__input">
+    @if (showSearchField()) {
+      <app-form-field>
+        <app-input
+          #input
+          (keyup)="search($event)"
+          size="sm"
+          [placeholder]="
+            searchPlaceholder() || ('form.search-placeholder' | translate)
+          "
+          icon="saxSearchNormal1Outline">
+        </app-input>
+      </app-form-field>
+    }
+  </div>
+
+  <ng-content select="[filters]"></ng-content>
+
+  <ng-content select="[buttons]"></ng-content>
+
+  <div class="searchbar__button">
+    @if (showButton()) {
+      <button appButton (click)="onButtonClicked()" size="sm">
+        <app-icon name="saxAddOutline" class="white-text" /> {{ buttonLabel() }}
+      </button>
+    }
+  </div>
+</div>
+
+@if (selectedData().length > 0 && showSelectedChip()) {
+  <section class="filter-list w-full">
+    <div class="filter-item">
+      <div class="filter-item__left">
+        <app-icon name="saxMinusSquareOutline" title="min" />
+      </div>
+      <div class="filter-item__center">
+        <p>{{ selectedData().length }} Quote Selected</p>
+      </div>
+      <div
+        class="filter-item__right"
+        (click)="onDeleteAll(selectedData())"
+        (keyup)="({})"
+        tabindex="0">
+        <app-icon name="saxTrashOutline" title="delete" />
+      </div>
+    </div>
+  </section>
+}

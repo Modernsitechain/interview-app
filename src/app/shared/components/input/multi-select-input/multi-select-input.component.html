@@ -1,0 +1,34 @@
+<button
+  #button
+  appButton
+  size="sm"
+  [appDropdown]="dropdown"
+  [width]="panelWidth()"
+  (opened)="onOpen()"
+  (closed)="onClose()"
+  [offsetY]="8"
+  class="input-wrap"
+  [class.purple]="color() === 'primary'"
+  [class.orange]="color() === 'secondary'"
+  [class.rounded-full]="roundedFull()"
+  type="button"
+  [title]="selectedLabels">
+  <app-icon [name]="leftIcon()" class="input-left-icon" />
+  <p [class.truncate]="truncate()">{{ selectedLabels }}</p>
+  @if (showChevron()) {
+    <app-icon name="saxArrowDown1Outline" class="input-icon" />
+  }
+</button>
+
+<ng-template #dropdown>
+  <app-dropdown>
+    <app-select-panel
+      [filterable]="filter()"
+      [options]="options()"
+      [multipleChoice]="true"
+      [multipleChoiceValues]="control.value || []"
+      (selectOutput)="onToggle($event)"
+      [filterPlaceholder]="'form.search-placeholder' | translate">
+    </app-select-panel>
+  </app-dropdown>
+</ng-template>

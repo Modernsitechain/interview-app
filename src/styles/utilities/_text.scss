@@ -1,0 +1,51 @@
+@use '../themes/fonts';
+
+@each $name, $size in fonts.$font-sizes {
+  .text-#{$name} {
+    font-size: $size !important;
+  }
+}
+
+$textAlignments: ("left", "right", "center", "revert");
+@each $textAlign in $textAlignments {
+  .text-#{$textAlign} {
+    text-align: #{$textAlign};
+  }
+}
+
+.text-ellipsis {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+$text-alignments: left, center, right;
+@each $alignment in $text-alignments {
+  .text-#{$alignment} {
+    text-align: $alignment;
+  }
+}
+
+$text-spacing-spacer: 0.125px;
+@for $i from 0 to 32 {
+  .text-spacing-#{$i} {
+    letter-spacing: $i * $text-spacing-spacer;
+  }
+}
+
+// TRANSFORM
+$textTransforms: ("uppercase", "lowercase", "capitalize");
+@each $transform in $textTransforms {
+  .text-#{$transform} {
+    text-transform: #{$transform};
+  }
+}
+
+// DECORATION
+$textDecorations: ("underline");
+@each $decoration in $textDecorations {
+  .text-#{$decoration} {
+    text-decoration: #{$decoration};
+  }
+}
+

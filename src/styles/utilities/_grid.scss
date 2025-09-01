@@ -1,0 +1,49 @@
+@use "../includes/breakpoints" as b;
+
+$columns: 12;
+$grid-spacer: 0.125rem;
+
+@for $i from 0 to 32 {
+  .gap-#{$i} {
+    gap: $i * $grid-spacer !important;
+  }
+}
+
+@for $i from 1 to $columns + 1 {
+  .col-#{$i} {
+    grid-column: span $i;
+  }
+}
+
+@each $breakpoint, $config in b.$breakpoints {
+  @include b.breakpoint-up($breakpoint) {
+    @for $i from 1 to $columns {
+      .col-#{$breakpoint}-#{$i} {
+        grid-column: span $i;
+      }
+    }
+  }
+}
+
+.row {
+  display: grid;
+  grid-template-columns: repeat($columns, 1fr);
+  column-gap: 1rem;
+}
+
+.grid-1 {
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+}
+
+.grid-2 {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: .625rem;
+}
+
+.grid-3 {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+}

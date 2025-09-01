@@ -1,0 +1,14 @@
+@use "includes" as i;
+@use "themes" as t;
+
+:host {
+  @include i.flex-column(center, space-between);
+  width: 100%;
+  height: 100%;
+  gap: 1rem;
+}
+
+.content{
+  display: block;
+  width: 100%;
+}

@@ -1,0 +1,35 @@
+@use 'includes' as i;
+@use 'themes' as t;
+@use "sass:color";
+
+:host {
+  @include i.flex-column(stretch, flex-start);
+  width: 100%;
+  height: 100%;
+  overflow: aut;
+}
+
+header{
+  margin-bottom: .625rem;
+}
+
+main {
+  @include i.flex-column(stretch, flex-start);
+  gap: 0.125rem;
+  max-height: 20vh;
+  overflow-y: auto;
+}
+
+.option {
+  cursor: pointer;
+  padding: 0.5rem;
+  background: transparent;
+
+  &:hover {
+    background-color: color.scale(t.$white, $lightness: -5%);
+  }
+}
+
+.no-result {
+  @include t.text-macro();
+}

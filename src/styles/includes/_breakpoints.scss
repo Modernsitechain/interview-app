@@ -1,0 +1,51 @@
+@use "sass:map";
+
+$default-breakpoint-up: 'lg';
+$default-breakpoint-down: 'md';
+
+$breakpoints: (
+  'xs': (
+    min: 0px,
+    max: 575px
+  ),
+  'sm': (
+    min: 576px,
+    max: 767px
+  ),
+  'md': (
+    min: 768px,
+    max: 991px
+  ),
+  'lg': (
+    min: 992px,
+    max: 1199px
+  ),
+  'xl': (
+    min: 1200px,
+    max: 1399px
+  ),
+  'xxl': (
+    min: 1400px
+  ),
+  'hd': (
+    min: 2560px
+  )
+);
+
+@function breakpoint($breakpoint, $item: min) {
+  $config: map.get($breakpoints, $breakpoint);
+  @return map.get($config, $item);
+}
+
+@mixin breakpoint-up($breakpoint) {
+  @media (min-width: breakpoint($breakpoint)) {
+    @content;
+  }
+}
+
+@mixin breakpoint-down($breakpoint) {
+  $value: breakpoint($breakpoint, max);
+  @media (max-width: $value) {
+    @content;
+  }
+}

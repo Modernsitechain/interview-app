@@ -1,0 +1,73 @@
+<table mat-table [dataSource]="dataSource()" matSort>
+  <!-- checkbox -->
+
+  @for (column of getColumns(headers()); track $index) {
+    @if (column === 'select') {
+      <ng-container matColumnDef="select" class="header-left" [sticky]="true">
+        <th mat-header-cell *matHeaderCellDef>
+          <div class="header-title-wrap"></div>
+        </th>
+        <td mat-cell *matCellDef="let row">
+          <div class="checkbox">
+            <input type="checkbox" (click)="setSelectedData(row, $event)" />
+          </div>
+        </td>
+      </ng-container>
+    } @else if (
+      column === 'action' || column === 'tooltip' || column === 'buttons'
+    ) {
+      <ng-container [matColumnDef]="column">
+        <th *matHeaderCellDef>
+          <div class="header-title-wrap">
+            <span class="header-title-text">{{
+              getHeader(column) | translate
+            }}</span>
+          </div>
+        </th>
+        @if (column === 'action') {
+          <td *matCellDef="let row">
+            <app-table-action-data-value
+              (viewDetail)="viewContentDetail(row)"
+              [showViewDetail]="showViewDetai()"
+              (update)="updateContent(row)"
+              (delete)="deleteContent(row)"
+              [disableViewDetail]="disableViewDetail()"
+              [disableUpdate]="disableUpdate()"
+              [disableDelete]="disableDelete()" />
+          </td>
+        }
+      </ng-container>
+    } @else {
+      <ng-container [matColumnDef]="column">
+        <th *matHeaderCellDef mat-sort-header>
+          <div class="header-title-wrap">
+            <span class="header-title-text">{{
+              getHeader(column) | translate
+            }}</span>
+          </div>
+        </th>
+        <td *matCellDef="let row" class="truncate">
+          <app-table-data-value
+            [type]="getValueType(column)"
+            [value]="getTableValue(column, row[column])"></app-table-data-value>
+        </td>
+      </ng-container>
+    }
+  }
+  <tr
+    mat-header-row
+    *matHeaderRowDef="getColumns(headers()); sticky: true"></tr>
+  <tr mat-row *matRowDef="let row; columns: getColumns(headers())"></tr>
+</table>
+
+@if (loading()) {
+  <div class="loading-wrap">
+    <app-icon name="saxRefreshOutline" />
+  </div>
+}
+
+@if (error()) {
+  <div class="loading-wrap">
+    <p>ERROR!</p>
+  </div>
+}

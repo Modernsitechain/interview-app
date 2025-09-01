@@ -1,0 +1,30 @@
+@let FormTitle = isCreateForm() ? 'Create Todo' : 'Update Todo';
+
+<app-form [form]="form">
+  <app-form-layout
+    [formTitle]="FormTitle"
+    (submit)="isCreateForm() ? onCreateTodo() : onUpdateTodo()"
+    (back)="onBack()"
+    [formDisabled]="form.invalid">
+    <app-form-field [label]="'Title' | translate" [required]="true">
+      <app-input
+        inputType="textarea"
+        [control]="form.controls.title"
+        [placeholder]="'Enter title' | translate" />
+    </app-form-field>
+
+    <app-form-field [label]="'description' | translate" [required]="false">
+      <app-input
+        inputType="textarea"
+        [control]="form.controls.description"
+        [placeholder]="'Enter description' | translate" />
+    </app-form-field>
+
+    <app-form-field [label]="'Priority' | translate" [required]="true">
+      <app-single-select-input
+        [control]="form.controls.priority"
+        [options]="todoService.todoPriorityOptions"
+        [placeholder]="'Select priority' | translate" />
+    </app-form-field>
+  </app-form-layout>
+</app-form>

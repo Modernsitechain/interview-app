@@ -1,0 +1,55 @@
+<h5 class="menu-title">{{ 'text.menu' | translate }}</h5>
+@for (menu of sidebarMenus; track menu.text) {
+  @if (menu.url && !menu.children) {
+    <a [routerLink]="menu.url">
+      <button
+        class="menu-wrap"
+        appButton
+        [stretch]="true"
+        [class.active]="isActiveMenu(menu.url)">
+        <div class="menu-icon">
+          <app-icon [name]="menu.icon"></app-icon>
+        </div>
+        <span class="menu-label">{{ menu.text | translate }}</span>
+      </button>
+    </a>
+  } @else if (!menu.url && menu.children) {
+    <div
+      class="menu-wrap"
+      [class.dropdown-active]="this.openedMenu().includes(menu.text)"
+      [class.active]="this.openedMenu().includes(menu.text)"
+      (keypress)="openDropdownMenu(menu.text)"
+      tabindex="0"
+      (click)="openDropdownMenu(menu.text)">
+      <div class="menu-text-wrapper">
+        <div class="menu-icon">
+          <app-icon [name]="menu.icon"></app-icon>
+        </div>
+        <span class="menu-label">{{ menu.text | translate }}</span>
+      </div>
+      <div class="dropdown-icon">
+        <app-icon
+          name="saxArrowDown1Outline"
+          [class.rotated]="this.openedMenu().includes(menu.text)" />
+      </div>
+    </div>
+    <div
+      class="menu-children-list"
+      [class.hidden]="!this.openedMenu().includes(menu.text)">
+      @for (children of menu.children; track $index) {
+        <a [routerLink]="children.url">
+          <button
+            class="menu-children-wrap"
+            appButton
+            [stretch]="true"
+            [class.active]="isActiveMenu(children.url)">
+            <div class="menu-empty-icon"></div>
+            <span class="menu-label">
+              {{ children.text | translate }}
+            </span>
+          </button>
+        </a>
+      }
+    </div>
+  }
+}

@@ -1,0 +1,45 @@
+@use "sass:map";
+
+// light 
+@font-face {
+  font-family: 'Lato';
+  font-weight: 100;
+  src: url('../../assets/fonts/Lato/Lato-Thin.ttf') format('woff');
+}
+
+@font-face {
+  font-family: 'Lato';
+  font-weight: 400;
+  src: url('../../assets/fonts/Lato/Lato-Regular.ttf') format('woff');
+}
+
+@font-face {
+  font-family: 'Lato';
+  font-weight: 700;
+  src: url('../../assets/fonts/Lato/Lato-Bold.ttf') format('woff');
+}
+
+@font-face {
+  font-family: 'Lato';
+  font-weight: 900;
+  src: url('../../assets/fonts/Lato/Lato-Black.ttf') format('woff');
+}
+
+
+$base-font-family: 'Lato', 'Roboto', 'Open Sans', system-ui, sans-serif;
+$base-font-weight: 400; // regular
+$base-font-size: 1rem;
+$font-sizes: (
+  "xs": 0.75rem,
+  "sm": 0.875rem,
+  "md": 1rem,
+  "lg": 1.25rem,
+  "xl": 1.5rem,
+  "2xl": 2rem,
+  "3xl": 2.5rem,
+  "4xl": 3rem,
+);
+
+@function font-size($size) {
+  @return map.get($font-sizes, $size);
+}

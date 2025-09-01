@@ -1,0 +1,30 @@
+@use 'includes' as i;
+@use 'themes' as t;
+
+:host {
+  display: block;
+  width: 100%;
+  height: fit-content;
+}
+
+.form-wrapper {
+  @include i.flex-column();
+  width: 100%;
+  padding: 1.5rem 2rem;
+  height: fit-content;
+  gap: 1.5rem;
+}
+
+.form-content {
+  width: 100%;
+  @include i.flex-column(stretch);
+  gap: .825rem;
+}
+
+.form-button{
+  width: 100%;
+  @include i.flex-row(center, flex-end);
+  gap: 0.5rem;
+}
+
+

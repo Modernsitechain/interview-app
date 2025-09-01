@@ -1,0 +1,35 @@
+@use 'includes' as i;
+@use 'themes' as t;
+
+:host {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.skeleton-item {
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    -90deg,
+    t.get-color('primary-neutral', 200) 25%,
+    t.get-color('primary-neutral', 100) 50%,
+    t.get-color('primary-neutral', 200) 75%
+  );
+  background-size: 400% 100%;
+  animation: loading 4s infinite;
+  border-radius: i.border-radius('md');
+
+  &.no-rounded{
+    border-radius: 0;
+  }
+}
+
+@keyframes loading {
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
+}

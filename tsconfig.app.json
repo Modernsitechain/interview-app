@@ -7,6 +7,7 @@
     "types": []
   },
   "files": [
+    "src/aws-pollyfill-like-file.ts",
     "src/main.ts"
   ],
   "include": [

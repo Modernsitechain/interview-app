@@ -1,0 +1,42 @@
+$margin-spacer: 0.125rem;
+
+.ml-auto {
+  margin-left: auto !important;
+}
+
+.mr-auto {
+  margin-right: auto !important;
+}
+
+.mx-auto {
+  margin-left: auto !important;
+  margin-right: auto !important;
+}
+
+@for $i from 0 to 50 {
+  .m-#{$i} {
+    margin: $i * $margin-spacer !important;
+  }
+  .mt-#{$i} {
+    margin-top: $i * $margin-spacer !important;
+  }
+  .mr-#{$i} {
+    margin-right: $i * $margin-spacer !important;
+  }
+  .mb-#{$i} {
+    margin-bottom: $i * $margin-spacer !important;
+  }
+  .ml-#{$i} {
+    margin-left: $i * $margin-spacer !important;
+  }
+
+  .mx-#{$i} {
+    padding-right: $i * $margin-spacer !important;
+    padding-left: $i * $margin-spacer !important;
+  }
+
+  .my-#{$i} {
+    padding-top: $i * $margin-spacer !important;
+    padding-bottom: $i * $margin-spacer !important;
+  }
+}

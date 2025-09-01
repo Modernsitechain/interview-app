@@ -1,0 +1,50 @@
+@use 'includes' as i;
+@use 'themes' as t;
+
+:host {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.no-data-state-component {
+  width: 100%;
+  min-height: 30rem;
+  height: 65vh;
+  @include i.flex(center, center);
+  padding: 0 1.5rem;
+
+  .no-data-wrapper {
+    width: 100%;
+    height: 100%;
+    border-radius: i.border-radius('md');
+    border: 1px solid t.get-color('neutral-gray');
+    @include i.flex-column(center, center);
+    gap: 0.5rem;
+    .content-image {
+      width: 10rem;
+      height: 10rem;
+      img {
+        width: 100%;
+        height: 100%;
+      }
+    }
+    .content-text {
+      @include i.flex-column(center, center);
+      width: 50%;
+      text-align: center;
+      gap: 0.3rem;
+      h4 {
+        @include t.text-display-xs();
+        font-weight: bold;
+        color: t.get-color('primary-neutral', 700);
+      }
+
+      p {
+        width: 70%;
+        @include t.text-sm();
+        color: t.get-color('neutral-gray', 900);
+      }
+    }
+  }
+}

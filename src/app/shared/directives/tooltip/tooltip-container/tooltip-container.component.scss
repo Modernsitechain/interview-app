@@ -1,0 +1,58 @@
+@use 'themes';
+@use 'includes' as i;
+
+$default-color: white;
+
+:host {
+  display: block;
+  padding: 0.875rem;
+  @include themes.text-macro();
+  background-color: themes.$white;
+  box-sizing: border-box;
+  position: relative;
+  @include i.border-radius-t(i.border-radius('lg'));
+  width: 100%;
+  
+  &.default {
+    box-shadow: 1px 2px 6px 2px #524A9B4D;
+    color: themes.$black;
+    background: themes.$white;
+  }
+}
+
+:host-context(.top) {
+  bottom: 0.65rem;
+  &::after {
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+}
+
+:host-context(.bottom) {
+  top: 0.65rem;
+  &::after {
+    bottom: 100%;
+    left: 50%;
+    transform: translateX(-50%) rotate(180deg);
+  }
+}
+
+@include i.breakpoint-up(i.$default-breakpoint-up) {
+  :host {
+    @include i.border-radius-b(i.border-radius('lg'));
+    &.default {
+      &::after {
+        border-color: $default-color transparent transparent transparent;
+      }
+    }
+
+    &::after {
+      position: absolute;
+      border-style: solid;
+      border-width: 0.5rem;
+      border-color: themes.$white transparent transparent transparent;
+      content: '';
+    }
+  }
+}

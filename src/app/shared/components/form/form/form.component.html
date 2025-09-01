@@ -1,0 +1,10 @@
+<form
+  (submit)="onSubmit($event)"
+  [autocomplete]="true"
+  [class.disabled]="form()?.disabled"
+>
+  <ng-content></ng-content>
+
+  <!-- This button will trigger onSubmit when preshing enter even when there is no button inside of this form -->
+  <button style="display: none"></button>
+</form>

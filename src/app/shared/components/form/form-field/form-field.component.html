@@ -1,0 +1,16 @@
+@if (label()) {
+<p class="text-capitalize">
+  {{ label() }}
+  @if(required()){
+  <span>*</span>
+  }
+</p>
+}
+
+<ng-content />
+
+<section class="message">
+  @if (infoText()) {
+  <app-info-message [message]="infoText()" />
+  }
+</section>

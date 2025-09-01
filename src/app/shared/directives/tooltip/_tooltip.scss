@@ -1,0 +1,21 @@
+@use 'themes';
+@use 'includes' as i;
+.tooltip {
+  opacity: 0.8;
+  font-size: themes.font-size('sm');
+}
+
+.tooltip-task-container {
+  max-width: 25.75rem;
+  font-size: themes.font-size('xs');
+
+  .images {
+    @include i.flex-row(center, center);
+    gap: 3.5rem;
+    img {
+      height: 100%;
+      max-height: 4.5rem;
+      max-width: 6rem;
+    }
+  }
+}

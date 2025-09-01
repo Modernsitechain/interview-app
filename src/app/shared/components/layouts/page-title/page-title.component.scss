@@ -1,0 +1,14 @@
+@use 'themes' as t;
+@use 'includes' as i;
+
+.page-title {
+  @include i.flex-row(center);
+  gap: .625rem;
+  &__text {
+    @include t.text-display-sm(semibold);
+  }
+}
+
+.icon-back{
+  font-size: 1.5rem;
+}

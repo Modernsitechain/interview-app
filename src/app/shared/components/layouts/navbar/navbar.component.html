@@ -1,0 +1,13 @@
+@let WeMindLogo = 'assets/images/logos/wemind.svg';
+<div class="left">
+  <div class="logo-wrapper" tabindex="0">
+    <img [src]="WeMindLogo" class="image-contain" alt="WeMind Logo" />
+  </div>
+  @if (environment !== appEnvironmentEnum.PRODUCTION) {
+  {{ environment }}
+  }
+  <ng-content select="[left]"></ng-content>
+</div>
+<div class="right">
+  <ng-content></ng-content>
+</div>

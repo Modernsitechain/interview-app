@@ -1,0 +1,29 @@
+@if (checkbox()) {
+  <div class="custom-checkbox">
+    <input type="checkbox" [checked]="choosed()" />
+  </div>
+}
+
+@if (radio()) {
+  <div class="radio-icon">
+    @if (choosed()) {
+      <div class="radio-choosed"></div>
+    }
+  </div>
+}
+
+@if (option.icon) {
+  <app-icon [name]="option.icon"></app-icon>
+}
+@if (option.country) {
+  <div class="flag-wrapper">
+    <img
+      [src]="'assets/img/flags/' + option.country.toLowerCase() + '.svg'"
+      [alt]="option.country" />
+  </div>
+}
+@if (option.name) {
+  <app-label>
+    {{ option.name }}
+  </app-label>
+}
