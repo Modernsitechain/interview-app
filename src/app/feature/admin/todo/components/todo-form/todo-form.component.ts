@@ -7,7 +7,7 @@ import { FormComponent, FormFieldComponent } from '@shared/components/form';
 import { InputComponent } from '@shared/components/input/input/input.component';
 import { TranslateModule } from '@ngx-translate/core';
 import { SingleSelectInputComponent } from '@shared/components/input/single-select-input/single-select-input.component';
-import { TodoService } from '@core/services';
+import { ToastService, TodoService } from '@core/services';
 import { FormLayoutComponent } from '@shared/components/layouts/form-layout/form-layout.component';
 import { Router } from '@angular/router';
 import dayjs from 'dayjs';
@@ -30,6 +30,7 @@ import dayjs from 'dayjs';
 export class TodoFormComponent extends FormBase<any, any> {
   public readonly todoService = inject(TodoService);
   private readonly router = inject(Router);
+  private readonly toastService = inject(ToastService);
 
   public override form = new FormGroup({
     title: new FormControl<string | null>(null, [Validators.required]),
@@ -56,6 +57,11 @@ export class TodoFormComponent extends FormBase<any, any> {
         updatedAt: null,
         dueDate: null
       });
+
+      this.toastService.success.set('Todo successfully created!');
+      setTimeout(() => {
+        this.onBack();
+      }, 1500);
     }
   }
 
