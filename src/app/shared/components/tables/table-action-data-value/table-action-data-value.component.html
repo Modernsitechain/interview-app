@@ -1,0 +1,30 @@
+@if (showViewDetail()) {
+  <a
+    class="action-item"
+    (click)="viewContentDetail()"
+    [class.disabled]="disableViewDetail()"
+    tabindex="0"
+    (keydown)="({})">
+    <app-icon [name]="'saxEyeOutline'" title="detail" />
+  </a>
+}
+@if (showUpdate()) {
+  <a
+    class="action-item"
+    (click)="updateContent()"
+    [class.disabled]="disableUpdate()"
+    tabindex="0"
+    (keydown)="({})">
+    <app-icon [name]="'saxEdit2Outline'" title="edit" />
+  </a>
+}
+@if (showDelete()) {
+  <a
+    class="action-item"
+    (click)="deleteContent()"
+    [class.disabled]="disableDelete()"
+    tabindex="0"
+    (keydown)="({})">
+    <app-icon [name]="'saxTrashOutline'" title="delete" />
+  </a>
+}
