@@ -1,0 +1,101 @@
+@use "includes" as i;
+@use "themes" as t;
+:host {
+  height: fit-content;
+}
+
+.header-title-wrap{
+  @include i.flex-row(center, flex-start);
+  gap: .5rem;
+  cursor: default;
+  .header-title-icon{
+    cursor: pointer;
+    height: 100%;
+    @include i.flex(center, center);
+  }
+}
+
+.header-left {
+  text-align: left;
+  border-top-left-radius: 0.5rem;
+}
+
+.header-right {
+  text-align: left;
+  border-top-right-radius: 0.5rem;
+}
+
+th {
+  color: t.get-color('primary-neutral', 700);
+  background-color: t.get-color('neutral-gray', 100);
+  max-width: 250px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis
+}
+
+td,
+tr {
+  color: t.get-color('primary-neutral', 900);
+  background-color: t.$white;
+}
+
+th,
+td,
+tr {
+  @include t.text-sm();
+  padding: 1.25rem 1.5rem;
+  border-bottom: 1px solid t.get-color('primary-green', 50);
+}
+
+.truncate{
+  max-width: 250px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis
+}
+
+mat-paginator {
+  background-color: white;
+}
+
+.mat-mdc-header-row {
+  height: fit-content;
+}
+
+.mat-mdc-row {
+  height: fit-content;
+}
+
+.loading-wrap{
+  @include i.flex(center, center);
+  @include t.text-display-sm(); 
+  padding: 5rem 0;
+  color: t.get-color('primary-neutral', 500);
+
+  app-icon {
+    animation: spin 1s linear infinite;
+  }
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(-360deg);
+  }
+}
+
+app-dropdown{
+  position: absolute;
+  width: fit-content;
+}
+
+.mat-mdc-table .mat-mdc-header-cell {
+  background-color: t.get-color('neutral-gray', 100) !important;
+}
+
+.checkbox{
+  @include i.checkbox();
+}
