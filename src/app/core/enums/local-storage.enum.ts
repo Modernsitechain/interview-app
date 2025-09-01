@@ -5,4 +5,5 @@ export enum LocalStorageKey {
   TokenExpiryTime = 'tokenExpiryTime',
   DeviceData = 'deviceData',
   
+  MY_TODOS = 'my-todos'
 }
