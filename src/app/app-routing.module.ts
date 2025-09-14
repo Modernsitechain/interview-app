@@ -1,23 +1,20 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { ADMIN_ROUTES } from '@feature/admin/admin.routes';
-import { AdminLayoutComponent } from '@shared/layouts';
+import { InterviewComponent } from '@feature/interview/interview.component';
 
 const routes: Routes = [
   {
-    path: 'admin',
-    canActivate: [],
-    component: AdminLayoutComponent,
-    loadChildren: () => ADMIN_ROUTES
+    path: 'interview',
+    component: InterviewComponent
   },
   {
     path: '',
     pathMatch: 'full',
-    redirectTo: 'admin'
+    redirectTo: 'interview'
   },
   {
     path: '**',
-    redirectTo: 'admin'
+    redirectTo: 'interview'
   }
 ];
 
@@ -25,4 +22,4 @@ const routes: Routes = [
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}
