@@ -14,7 +14,8 @@ export interface Interview {
 
 const baseNamePath = 'assets/sounds/question/name/';
 const baseSelfIntroPath = 'assets/sounds/question/self-introduction/';
-const baseStrengthWeaknessIntroPath = 'assets/sounds/question/strength-weakness/';
+const baseStrengthWeaknessIntroPath =
+  'assets/sounds/question/strength-weakness/';
 
 export const InterviewNameData: Interview[] = [
   {
@@ -48,4 +49,10 @@ export const InterviewStrengthWeaknessData: Interview[] = [
     type: InterviewQuestionType.STRENGTH_WEAKNESS,
     filePath: baseStrengthWeaknessIntroPath + 'q_s_and_w_1.mp3'
   }
+];
+
+export const AllQuestionData: Interview[] = [
+  ...InterviewNameData,
+  ...InterviewSelfIntroData,
+  ...InterviewStrengthWeaknessData
 ];

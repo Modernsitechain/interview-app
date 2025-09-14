@@ -7,6 +7,7 @@ import {
   signal
 } from '@angular/core';
 import {
+  Interview,
   InterviewNameData,
   InterviewSelfIntroData,
   InterviewStrengthWeaknessData
@@ -28,7 +29,7 @@ export class InterviewComponent {
   private readonly interviewService = inject(InterviewService);
 
   public interviewStarted = signal<boolean>(false);
-  public readonly interviewQuestions = signal<string[] | undefined>(undefined);
+  public interviewQuestions = signal<Interview[] | undefined>(undefined);
 
   public questionIdx = signal<number>(0);
 
@@ -41,30 +42,27 @@ export class InterviewComponent {
 
   public currentAudio = computed<string | null>(() => {
     if (!this.interviewQuestions()) return null;
-    else return this.interviewQuestions()![this.questionIdx() - 1];
+    else return this.interviewQuestions()![this.questionIdx() - 1].filePath;
   });
 
   constructor() {
     effect(() => {
       const path = this.currentAudio();
       if (path) {
-        this.audio.pause();
-        this.audio.currentTime = 0;
-        this.audio.src = path;
-        this.audio.load();
-        this.audio.play().catch(err => console.error('Audio play failed', err));
+        this.stopAudio();
+        this.playAudio(path);
+      } else {
+        this.stopAudio();
       }
     });
   }
 
-  public getInterviewQuestion() {
-    const question = this.interviewService.getQuestions(
-      InterviewNameData,
-      InterviewSelfIntroData,
-      InterviewStrengthWeaknessData
-    );
+  public getQuestion() {
+    const question = this.interviewService.getRandomQuestion();
 
-    console.log(question);
+    if (!question) return;
+    this.stopAudio();
+    this.playAudio(question.filePath);
   }
 
   public startInterview(): void {
@@ -91,5 +89,16 @@ export class InterviewComponent {
     this.interviewQuestions.set(undefined);
 
     this.questionIdx.set(0);
+  }
+
+  private playAudio(path: string): void {
+    this.audio.src = path;
+    this.audio.load();
+    this.audio.play().catch((err) => console.error('Audio play failed', err));
+  }
+
+  private stopAudio(): void {
+    this.audio.pause();
+    this.audio.currentTime = 0;
   }
 }

@@ -3,16 +3,6 @@
 <div class="content-wrap">
   <div class="content-btn">
     <button
-      appButton="outline"
-      size="sm"
-      class="question-btn"
-      (click)="getInterviewQuestion()"
-      [isDisabled]="interviewStarted()">
-      <app-icon name="saxSoundBold" />
-      Get Question
-    </button>
-
-    <button
       appButton
       size="sm"
       class="question-btn"
@@ -20,6 +10,15 @@
       [isDisabled]="interviewStarted()">
       <app-icon name="saxPeopleBold" />
       Start Interview
+    </button>
+    <button
+      appButton="outline"
+      size="sm"
+      class="question-btn"
+      (click)="getQuestion()"
+      [isDisabled]="interviewStarted()">
+      <app-icon name="saxSoundBold" />
+      Get Question
     </button>
   </div>
   <div class="question">
