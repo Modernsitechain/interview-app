@@ -6,15 +6,15 @@ export enum InterviewQuestionType {
   STRENGTH_WEAKNESS = 'strength_weakness'
 }
 
-interface Interview {
+export interface Interview {
   id: number;
   type: InterviewQuestionType;
   filePath: string;
 }
 
-const baseNamePath = 'assets/question/name/';
-const baseSelfIntroPath = 'assets/question/self-introduction/';
-const baseStrengthWeaknessIntroPath = 'assets/question/strength-weakness/';
+const baseNamePath = 'assets/sounds/question/name/';
+const baseSelfIntroPath = 'assets/sounds/question/self-introduction/';
+const baseStrengthWeaknessIntroPath = 'assets/sounds/question/strength-weakness/';
 
 export const InterviewNameData: Interview[] = [
   {
