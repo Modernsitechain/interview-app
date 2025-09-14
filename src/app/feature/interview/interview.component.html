@@ -1,0 +1,61 @@
+<h2 class="title">For Interview</h2>
+
+<div class="content-wrap">
+  <div class="content-btn">
+    <button
+      appButton
+      size="sm"
+      class="question-btn"
+      (click)="startInterview()"
+      [isDisabled]="interviewStarted()">
+      <app-icon name="saxPeopleBold" />
+      Start Interview
+    </button>
+    <button
+      appButton="outline"
+      size="sm"
+      class="question-btn"
+      (click)="getQuestion()"
+      [isDisabled]="interviewStarted()">
+      <app-icon name="saxSoundBold" />
+      Get Question
+    </button>
+  </div>
+  <div class="question">
+    @if (interviewStarted()) {
+      <div class="question-text">
+        <span>QUESTION</span>
+        <h1>{{ questionIdx() }} / {{ interviewQuestions()!.length }}</h1>
+      </div>
+
+      @if (!lastQuestion()) {
+        <button
+          appButton="text"
+          size="sm"
+          class="question-btn"
+          (click)="nextQuestion()"
+          [stretch]="true">
+          Next Question
+        </button>
+      } @else {
+        <button
+          appButton="text"
+          size="sm"
+          class="question-btn"
+          (click)="finishInterview()"
+          [stretch]="true">
+          Finish Question
+        </button>
+      }
+    } @else {
+      <div class="not-started">
+        <h2 class="not-started__title">Sesi interview belum dimulai</h2>
+        <p class="not-started__text">
+          Klik tombol "Start Interview" di atas untuk memulai simulasi
+          interview, dan tombol "Get Question" untuk mendapatkan 1 pertanyaan
+          random
+        </p>
+      </div>
+    }
+  </div>
+</div>

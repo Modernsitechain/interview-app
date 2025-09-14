@@ -1,1 +1,1 @@
-export * from './admin-layout/admin-layout.component';
+export * from './interview-layout/interview-layout.component';

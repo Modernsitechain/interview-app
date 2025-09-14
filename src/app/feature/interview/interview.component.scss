@@ -1,0 +1,71 @@
+@use 'themes' as t;
+@use 'includes' as i;
+
+:host {
+  @include i.flex-column(center, flex-start);
+  width: 100%;
+  height: 100vh;
+  background-color: t.get-color('neutral-gray', 300);
+  padding: 3rem 1rem;
+  gap: 2rem;
+}
+
+.title {
+  font-weight: bold;
+}
+
+.question-btn {
+  @include i.flex-row(center, center);
+  gap: 0.5rem;
+}
+
+.content-wrap {
+  width: 100%;
+  @include i.flex-column(center, center);
+  gap: 1rem;
+}
+
+.content-btn {
+  width: 100%;
+  @include i.flex-row(center, center);
+  gap: 0.625rem;
+  padding: 1rem 0.625rem;
+  border-radius: i.border-radius('md');
+  background-color: t.$white;
+  @include i.shadow();
+}
+
+.question {
+  @include i.flex-column(center, flex-start);
+  width: 100%;
+  padding: 1rem 0.625rem;
+  border-radius: i.border-radius('md');
+  background-color: t.$white;
+  @include i.shadow();
+  gap: 1.5rem;
+
+  &-text {
+    @include i.flex-column(center, flex-start);
+
+    span {
+      @include t.text-macro(medium);
+      color: t.get-color('primary-neutral', 400);
+    }
+  }
+}
+
+.not-started {
+  @include i.flex-column(center, center);
+  gap: .625rem;
+  &__title {
+    width: 70vw;
+    text-align: center;
+    @include t.text-display-xs(bold);
+  }
+  &__text {
+    width: 80vw;
+    text-align: center;
+    @include t.text-macro();
+    color: t.get-color('primary-neutral', 400);
+  }
+}
